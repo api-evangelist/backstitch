@@ -1,0 +1,38 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.backstit.ch/api/
+docs: https://docs.backstit.ch/api/
+summary:
+  types: [apiKey]
+  api_key_in: [query, path]
+  oauth2_flows: []
+  notes: >-
+    No OAuth or OpenID Connect. Access is governed by two credential types passed
+    as request parameters. There is no published OpenAPI document; this profile is
+    hand-captured from the public API reference.
+schemes:
+- name: OrganizationKey
+  type: apiKey
+  in: query
+  parameter: key
+  description: >-
+    Organization API Key. Required to create, update, delete, or clone topics and
+    to manage organization-level sources and posts. Also appears as a path segment
+    on organization endpoints (/organizations/{ORGANIZATION_KEY}).
+  scope: organization
+  sources: [docs.backstit.ch/api/]
+- name: TopicToken
+  type: apiKey
+  in: path
+  parameter: TOPIC_TOKEN
+  description: >-
+    Per-topic token used for read-only access to a topic's details and results and
+    to scope write operations to a specific topic (/topics/{TOPIC_TOKEN}). In the
+    legacy v1 API the equivalent value is passed as the `token` query parameter.
+  scope: topic
+  sources: [docs.backstit.ch/api/]
+matrix:
+  create: {organization_key: required, topic_token: required-except-new-topic}
+  read: {organization_key: optional, topic_token: required}
+  update: {organization_key: required, topic_token: required}
+  delete: {organization_key: required, topic_token: required}

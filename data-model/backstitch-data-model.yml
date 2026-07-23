@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: derived
+source: https://docs.backstit.ch/api/
+note: >-
+  Entity-relationship graph hand-derived from the backstitch API reference (no
+  OpenAPI is published). Identifiers are opaque tokens/keys rather than typed
+  id-prefixes.
+entities:
+- name: Organization
+  key: ORGANIZATION_KEY
+  fields: [id, name, logo, highlight_color, key]
+  relationships:
+  - {type: has_many, target: Team, via: teams}
+  - {type: has_many, target: Topic, via: topics}
+  - {type: has_many, target: CustomSource, via: create_source}
+- name: Team
+  fields: [name, members]
+  relationships:
+  - {type: belongs_to, target: Organization, via: organization}
+- name: Topic
+  key: TOPIC_TOKEN
+  fields: [id, name, token, description, banner, permission, sources, filters, errors]
+  relationships:
+  - {type: belongs_to, target: Organization, via: organization}
+  - {type: has_many, target: Source, via: sources}
+  - {type: has_many, target: Filter, via: filters}
+  - {type: has_many, target: Result, via: results}
+- name: Source
+  fields: [service, value, filters, crawl_url]
+  relationships:
+  - {type: belongs_to, target: Topic, via: topic}
+- name: Filter
+  fields: [type, phrase]
+  note: type is one of include | exclude | nsfw
+  relationships:
+  - {type: belongs_to, target: Topic, via: topic}
+- name: CustomSource
+  fields: [name, description, promoted_days, allow_sharing, icon, team]
+  relationships:
+  - {type: belongs_to, target: Organization, via: organization}
+- name: Result
+  polymorphic: true
+  subtypes: [Article, Status, Photo, Video, Product, Service, Hotel]
+  common_fields: [id, type, description, published_at, source, origin]
+  relationships:
+  - {type: belongs_to, target: Topic, via: topic}

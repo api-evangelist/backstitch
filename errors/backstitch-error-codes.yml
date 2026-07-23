@@ -1,0 +1,48 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.backstit.ch/api/
+format: message-string
+envelope:
+  note: >-
+    Errors are returned as human-readable message strings (and per-item `errors`
+    arrays on batch source/filter operations). backstitch does not publish an
+    RFC 9457 problem+json contract or numeric error codes; the values below are the
+    documented error messages captured verbatim from the API reference.
+  batch_errors_field: errors
+errors:
+- message: Invalid organization API Key
+  cause: The supplied Organization Key does not match a known organization.
+  operations: [create-topic, update-sources, update-filters, delete-topic, custom-source]
+- message: Invalid topic
+  cause: The supplied topic token does not resolve to an existing topic.
+  operations: [read-topic, update-sources, update-filters, delete-topic, clone-topic]
+- message: Missing name
+  cause: A topic was created without the required `name` parameter.
+  operations: [create-topic]
+- message: Invalid permission
+  cause: The `permission` value was not one of `private` or `public`.
+  operations: [create-topic]
+- message: Invalid filter-type
+  cause: The filter `type` was not one of `include`, `exclude`, or `nsfw`.
+  operations: [create-topic, update-filters]
+- message: Invalid service
+  cause: The requested source `service` is not a supported backstitch service.
+  operations: [create-topic, update-sources]
+- message: Service not authorized
+  cause: The source service requires a linked account that is not connected.
+  operations: [update-sources]
+- message: Source already added
+  cause: The source (service + value) already exists on the topic.
+  operations: [update-sources]
+- message: Filter already added
+  cause: The filter (type + phrase) already exists on the topic.
+  operations: [update-filters]
+- message: No such filter
+  cause: A delete referenced a filter that is not present on the topic.
+  operations: [delete-filters]
+- message: Invalid topic to clone
+  cause: A referenced topic token in `topic_tokens` could not be cloned.
+  operations: [create-topic, clone-topic]
+- message: Add-on not activated
+  cause: The requested capability requires an add-on that is not enabled on the topic.
+  operations: [read-topic]

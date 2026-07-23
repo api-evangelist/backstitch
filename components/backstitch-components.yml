@@ -1,0 +1,32 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.backstit.ch/api/
+components:
+- name: backstitch Topic Widget
+  family: embedded-feed
+  kind: script-embed
+  loader: https://api.backstit.ch/v1/topic/widget.js
+  embed: >-
+    <script async type="text/javascript"
+      src="https://api.backstit.ch/v1/topic/widget.js?count=10&token={TOPIC_TOKEN}&ref={URL}"></script>
+  required_params: [token, count, ref]
+  optional_params:
+  - container_id
+  - on_click
+  - open_in_widget
+  - suppress_duplicates
+  - card_theme
+  - content_theme
+  - theme
+  styling:
+    approach: css-classes + SASS templates
+    root_classes:
+    - backstitch-twitter-result
+    - backstitch-facebook-result
+    - backstitch-instagram-result
+    - backstitch-youtube-result
+    - backstitch-linkedin-result
+    - backstitch-news-result
+  description: >-
+    Drop-in JavaScript widget that renders a backstitch topic's curated results
+    inline in any web page, themable via CSS classes and SASS templates.

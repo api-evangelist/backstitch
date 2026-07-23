@@ -1,0 +1,14 @@
+generated: '2026-07-18'
+method: searched
+note: >-
+  Probed the well-known discovery surface on the API and website hosts. No
+  documents were served (all 404). Recorded for auditability; no WellKnown/
+  SecurityTxt pointer is emitted because nothing was found.
+hosts:
+- host: https://api.backstit.ch
+  documents:
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+- host: https://www.backstitch.io
+  documents:
+  - {path: /.well-known/security.txt, status: 404}

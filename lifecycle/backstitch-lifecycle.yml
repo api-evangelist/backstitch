@@ -1,0 +1,29 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.backstit.ch/api/
+versioning:
+  scheme: uri-path
+  current: v2
+  versions:
+  - id: v2
+    base_url: https://api.backstit.ch/v2
+    status: recommended
+    note: Receives incremental updates; recommended for ongoing development.
+  - id: v1
+    base_url: https://api.backstit.ch/v1/topic
+    status: legacy
+    note: >-
+      Legacy topic API (details.json / fetch.json / filter.json). Still documented
+      and serving the embed widget, but superseded by v2.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  note: >-
+    No formal deprecation policy, Sunset/Deprecation header support (RFC 8594), or
+    dated end-of-life is published. v1 is described as "legacy" versus v2
+    "recommended" — a soft version preference, not a documented deprecation.
+sla:
+  url: null
+  uptime_target: null
+status_page: null
+deprecated_operations: []

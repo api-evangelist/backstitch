@@ -1,0 +1,26 @@
+# backstitch
+
+> backstitch is a Techstars-backed Kansas City company offering an employee and total-rewards communications platform plus a developer content-curation API. The API builds and manages "topics" that aggregate and filter content from social, RSS, video, deals, subreddit, and custom sources, and returns normalized result objects (articles, statuses, photos, videos, products, services, hotels) or embeds them via a JavaScript widget. It is offered as legacy v1 and recommended v2 over REST/JSON, authenticated with an Organization Key plus per-topic tokens.
+
+## APIs
+- [backstitch Content Curation API (docs)](https://docs.backstit.ch/api/): REST/JSON topic + results API. Base URL https://api.backstit.ch/v2 (legacy v1 at https://api.backstit.ch/v1/topic).
+
+## Docs
+- [API Reference](https://docs.backstit.ch/api/): endpoints for organizations, teams, topics, sources, filters, results, cloning, custom sources, and the embed widget.
+- [Support / Knowledge Base](https://www.backstitch.io/help)
+- [Blog](https://www.backstitch.io/blog)
+
+## Artifacts
+- [Authentication profile](authentication/backstitch-authentication.yml)
+- [Error catalog](errors/backstitch-error-codes.yml)
+- [API conventions](conventions/backstitch-conventions.yml)
+- [Lifecycle & versioning](lifecycle/backstitch-lifecycle.yml)
+- [Data model](data-model/backstitch-data-model.yml)
+- [Embedded components (widget)](components/backstitch-components.yml)
+- [MCP candidate tool surface](mcp/backstitch-mcp.yml)
+
+## Company
+- [Website](https://www.backstitch.io/)
+- [GitHub organization](https://github.com/backstitch)
+- [Trust Center](https://trust.backstitch.io/)
+- [Privacy Policy](https://www.backstitch.io/website-privacy-policy)

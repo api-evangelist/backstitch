@@ -1,0 +1,46 @@
+generated: '2026-07-18'
+method: searched
+source: https://docs.backstit.ch/api/
+authentication:
+  style: apiKey
+  detail: >-
+    Organization Key (`key`) for writes/organization scope; per-topic token for
+    read/topic scope. See authentication/backstitch-authentication.yml.
+  ref: authentication/backstitch-authentication.yml
+idempotency:
+  supported: false
+  note: No idempotency-key header or parameter is documented.
+pagination:
+  style: offset
+  params:
+    count: {default: 20, max: 50, description: Number of results per request.}
+    skip: {default: 0, description: Number of results to skip from the start.}
+  cursor_alternative:
+    params: [min_id, max_id, min_date, max_date]
+    description: >-
+      Results can also be windowed by id or by date (epoch or ISO 8601) for
+      forward/backward paging instead of skip/count.
+  default_ordering: descending by publish date
+  response_field: results
+filtering:
+  term_search: {param: term, description: Full-text term filter on topic results.}
+  suppress_duplicates: {param: suppress_duplicates, description: Collapse duplicate results.}
+metadata:
+  formats: [json]
+  content_types: [application/json]
+request_tracing:
+  request_id_header: null
+  note: No request-id / correlation header is documented.
+versioning:
+  scheme: uri-path
+  ref: lifecycle/backstitch-lifecycle.yml
+error_envelope:
+  shape: message-string
+  batch_errors_field: errors
+  ref: errors/backstitch-error-codes.yml
+rate_limiting:
+  signaling: null
+  note: >-
+    No rate-limit response headers are documented. Docs note widget page views
+    count as a single API call against the subscription plan; results are limited
+    to max 50 per request and reindex up to ~1 minute after source/filter changes.

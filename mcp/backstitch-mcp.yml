@@ -1,0 +1,57 @@
+generated: '2026-07-18'
+method: derived
+status: candidate
+source: https://docs.backstit.ch/api/
+note: >-
+  No official/hosted backstitch MCP server was found. This is a candidate tool
+  surface derived from the documented v2 REST operations so an MCP server could be
+  built; not published by backstitch.
+server:
+  name: backstitch
+  transport: http
+tools:
+- name: get_organization
+  description: Get organization details (id, name, logo, key).
+  source_operation: GET /organizations/{ORGANIZATION_KEY}
+- name: list_organization_teams
+  description: List an organization's teams and members.
+  source_operation: GET /organizations/{ORGANIZATION_KEY}/teams
+- name: list_organization_topics
+  description: List an organization's topics with sources and filters.
+  source_operation: GET /organizations/{ORGANIZATION_KEY}/topics
+- name: create_topic
+  description: Create a content topic with sources and filters.
+  source_operation: POST /topics
+- name: get_topic
+  description: Get a topic's details, sources, and filters.
+  source_operation: GET /topics/{TOPIC_TOKEN}
+- name: delete_topic
+  description: Delete a topic.
+  source_operation: DELETE /topics/{TOPIC_TOKEN}
+- name: add_topic_sources
+  description: Add sources to a topic.
+  source_operation: POST /topics/{TOPIC_TOKEN}/sources
+- name: remove_topic_sources
+  description: Remove sources from a topic.
+  source_operation: DELETE /topics/{TOPIC_TOKEN}/sources
+- name: add_topic_filters
+  description: Add include/exclude/nsfw filters to a topic.
+  source_operation: POST /topics/{TOPIC_TOKEN}/filters
+- name: remove_topic_filters
+  description: Remove filters from a topic.
+  source_operation: DELETE /topics/{TOPIC_TOKEN}/filters
+- name: clone_topic
+  description: Clone sources/filters from other topics into a topic.
+  source_operation: POST /topics/{TOPIC_TOKEN}/clone
+- name: unclone_topic
+  description: Remove previously cloned sources/filters from a topic.
+  source_operation: POST /topics/{TOPIC_TOKEN}/unclone
+- name: get_topic_results
+  description: Retrieve a topic's curated results with paging and term filters.
+  source_operation: GET /topics/{TOPIC_TOKEN}/results
+- name: create_custom_source
+  description: Create a custom source for an organization.
+  source_operation: POST /organizations/{ORGANIZATION_KEY}/create_source
+- name: post_to_custom_source
+  description: Post text/image/link content into a custom source feed.
+  source_operation: POST /organizations/{ORGANIZATION_KEY}/post

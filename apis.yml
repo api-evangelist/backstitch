@@ -32,7 +32,7 @@ x-tier: profile
 x-tier-reason: enriched-from-public-developer-surface
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-18'
+modified: '2026-08-13'
 tags:
 - Company
 - Content Curation
@@ -101,8 +101,22 @@ common:
   url: mcp/backstitch-mcp.yml
 - type: LLMsTxt
   url: llms/backstitch-llms.txt
+- type: DeveloperPortal
+  url: https://docs.backstit.ch/api/
+- type: GettingStarted
+  url: https://support.backstitch.com/support-topic/getting-started/
+- type: HelpCenter
+  url: https://support.backstitch.com/
+- type: TermsOfService
+  url: https://www.backstitch.io/terms-of-service
+- type: Login
+  url: https://studio.backstit.ch/
+- type: Conformance
+  url: conformance/backstitch-conformance.yml
+- type: Compliance
+  url: security/backstitch-trust-center.yml
 x-enrichment:
-  date: '2026-07-19'
-  status: backfilled
+  date: '2026-08-13'
+  status: enriched
+  artifacts_added: 6
   pass: local-v1
-  note: backfilled from .gitignore signal + verified work evidence

@@ -1,0 +1,95 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://docs.backstit.ch/api/, https://www.backstitch.io/,
+  https://trust.backstitch.io/
+note: >-
+  Cross-cutting standards conformance for the backstitch Content Curation API.
+  Assessed against the public API reference (no OpenAPI is published) plus the
+  company's own compliance surface. Every `conforms: false` below is a measured
+  absence, not an assumption.
+standards:
+- id: openapi
+  conforms: false
+  evidence: >-
+    No OpenAPI/Swagger document is served anywhere. Probed /openapi.json,
+    /openapi.yaml, /swagger.json, /v1/openapi.json, /api-docs, /docs, /redoc on
+    api.backstit.ch (404/403), docs.backstit.ch (404 HTML shell) and
+    www.backstitch.io (404). The reference is Slate-generated HTML.
+- id: oauth2
+  conforms: false
+  evidence: >-
+    Auth is an Organization Key plus a per-topic token passed as query/path
+    parameters. No OAuth 2.0 authorization server; /.well-known/oauth-authorization-server
+    404s on every host. See authentication/backstitch-authentication.yml.
+- id: oidc
+  conforms: false
+  evidence: /.well-known/openid-configuration returned 404 on api.backstit.ch, docs.backstit.ch and www.backstitch.io.
+- id: rfc9457
+  conforms: false
+  evidence: >-
+    Errors are human-readable message strings (plus a per-item `errors` array on
+    batch source/filter operations); no application/problem+json media type and
+    no `type`/`title`/`status`/`detail` members. See
+    errors/backstitch-error-codes.yml.
+- id: rfc8594
+  conforms: false
+  evidence: >-
+    No Sunset or Deprecation headers and no dated end-of-life policy. v1 is
+    described as "legacy" against v2 "recommended" — a soft preference only. See
+    lifecycle/backstitch-lifecycle.yml.
+- id: rfc9116
+  conforms: false
+  evidence: /.well-known/security.txt returned 404 on api.backstit.ch, docs.backstit.ch, backstitch.io and www.backstitch.io.
+- id: pagination
+  conforms: true
+  evidence: >-
+    Offset pagination is documented and consistent — `count` (default 20, max 50)
+    and `skip` (default 0) — with id/date windowing (`min_id`, `max_id`,
+    `min_date`, `max_date`) as an alternative. See
+    conventions/backstitch-conventions.yml.
+- id: idempotency
+  conforms: false
+  evidence: >-
+    No idempotency key header or parameter is documented on any of the POST
+    endpoints (create topic, add sources, add filters, clone, post to custom
+    source), so retries are not safe by contract.
+- id: json
+  conforms: true
+  evidence: All endpoints accept and return application/json; the result-type dictionary documents seven normalized result shapes.
+- id: jsonapi
+  conforms: false
+  evidence: Responses are bare arrays/objects, not a JSON:API document with data/errors/links members.
+- id: rest
+  conforms: partial
+  evidence: >-
+    Resource-oriented paths (/organizations/{key}, /topics/{token}/sources,
+    /topics/{token}/filters) with GET/POST/DELETE, but credentials travel as
+    query parameters rather than an Authorization header, and there is no PUT/PATCH
+    surface — updates are add/remove pairs.
+- id: soc2
+  conforms: claimed
+  evidence: >-
+    backstitch publishes the AICPA "SOC for Service Organizations" badge on its
+    homepage (https://www.backstitch.io/, image 21972-312_SOC_NonCPA.png linking
+    to http://www.aicpa.org/soc4so) and runs a Vanta-hosted trust center at
+    https://trust.backstitch.io/ (200) whose meta description advertises
+    "policies and certifications". The report type (Type I vs Type II), audit
+    period and auditor are NOT stated on any anonymously readable page — the
+    trust center body is JavaScript-rendered and its Vanta API returns 401. See
+    security/backstitch-trust-center.yml.
+- id: gdpr
+  conforms: unknown
+  evidence: >-
+    Separate website and platform privacy policies are published
+    (https://www.backstitch.io/website-privacy-policy,
+    https://www.backstitch.io/platform-privacy-policy) but no explicit GDPR/DPA
+    conformance statement was found on an anonymously readable page.
+- id: hipaa
+  conforms: unknown
+  evidence: No HIPAA claim found on any anonymously readable backstitch page.
+- id: iso27001
+  conforms: unknown
+  evidence: >-
+    Not named on any readable page. The Vanta trust center may list it, but its
+    contents are JS-rendered and its data API is auth-gated (401).

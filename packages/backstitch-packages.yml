@@ -1,0 +1,68 @@
+generated: '2026-08-13'
+method: searched
+source: >-
+  https://registry.npmjs.org/-/v1/search?text=backstitch (0 first-party results),
+  https://pypi.org/pypi/backstitch/json (200 — third-party, not backstitch),
+  https://rubygems.org/api/v1/owners/backstitch/gems.json (404),
+  https://api.github.com/orgs/backstitch/repos,
+  https://docs.backstit.ch/api/
+package_count: 0
+packages: []
+note: >-
+  backstitch publishes no first-party client library on any public registry. The
+  API reference at https://docs.backstit.ch/api/ ships only cURL and Ruby
+  `rest_client` snippets — hand-rolled HTTP calls, not an SDK. No `SDKs` pointer
+  is emitted because there is nothing to point at.
+searched_registries:
+- registry: npm
+  query: https://registry.npmjs.org/-/v1/search?text=backstitch
+  status: 200
+  first_party_hits: 0
+- registry: pypi
+  query: https://pypi.org/pypi/backstitch/json
+  status: 200
+  first_party_hits: 0
+  note: >-
+    A package literally named `backstitch` exists on PyPI (0.3.0) but it belongs
+    to a different author — repository https://github.com/VanL/backstitch,
+    summary "Backstitch style spec-code traceability checks and semantic review
+    tooling". It is a name collision, not a backstitch (backstitch.io) SDK, and
+    is deliberately NOT recorded as theirs.
+- registry: rubygems
+  query: https://rubygems.org/api/v1/owners/backstitch/gems.json
+  status: 404
+  first_party_hits: 0
+- registry: github
+  query: https://api.github.com/orgs/backstitch/repos
+  status: 200
+  first_party_hits: 0
+  note: >-
+    The org holds 30 public repositories. All but two are forks of third-party
+    Ruby/Dokku/Heroku infrastructure (omniauth-*, dokku-*, heroku-buildpack-*).
+    The two first-party repos are documentation, not libraries:
+    `backstitch/api` (the Slate source for docs.backstit.ch, last commit
+    2019-03-27) and `backstitch/backstitch.github.io`.
+- registry: maven-central
+  first_party_hits: 0
+- registry: nuget
+  first_party_hits: 0
+- registry: packagist
+  first_party_hits: 0
+- registry: crates.io
+  first_party_hits: 0
+- registry: pkg.go.dev
+  first_party_hits: 0
+cdn_distributions:
+- name: backstitch Topic Widget
+  registry: cdn
+  url: https://api.backstit.ch/v1/topic/widget.js
+  version: null
+  published: null
+  official: true
+  note: >-
+    The only first-party distributable backstitch ships is the embed widget,
+    served unversioned from the v1 API host. The URL carries no version segment
+    and there is no CDN metadata endpoint (it is not on npm/unpkg/jsDelivr), so a
+    consumer cannot pin or even name the build they are loading. Recorded as
+    null after checking, not left unchecked. See
+    components/backstitch-components.yml.

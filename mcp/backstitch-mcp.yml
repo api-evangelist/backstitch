@@ -2,10 +2,8 @@ generated: '2026-07-18'
 method: derived
 status: candidate
 source: https://docs.backstit.ch/api/
-note: >-
-  No official/hosted backstitch MCP server was found. This is a candidate tool
-  surface derived from the documented v2 REST operations so an MCP server could be
-  built; not published by backstitch.
+note: No official/hosted backstitch MCP server was found. This is a candidate tool surface derived from
+  the documented v2 REST operations so an MCP server could be built; not published by backstitch.
 server:
   name: backstitch
   transport: http
@@ -55,3 +53,9 @@ tools:
 - name: post_to_custom_source
   description: Post text/image/link content into a custom source feed.
   source_operation: POST /organizations/{ORGANIZATION_KEY}/post
+deployment:
+  mode: none
+  verified: derived
+  tools: 15
+  checked: '2026-08-12'
+  source: catalog MCP census

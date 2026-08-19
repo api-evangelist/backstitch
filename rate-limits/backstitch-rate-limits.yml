@@ -1,0 +1,37 @@
+generated: '2026-08-13'
+method: searched
+source: https://docs.backstit.ch/api/
+limit_count: 0
+limits: []
+headers:
+  request: []
+  response: []
+  note: >-
+    No rate-limit response headers are documented. The reference contains no
+    occurrence of "rate limit", "X-RateLimit", "RateLimit-", "Retry-After" or
+    "429". An agent calling this API has no runtime signal of remaining quota and
+    no documented status code for exhaustion.
+exhaustion_status: null
+note: >-
+  backstitch documents no published rate limits. What it does document is a
+  QUOTA relationship rather than a rate: the embed widget's page views "will
+  count as a single API call according to your subscription plan", and topic
+  results are capped at `count` max 50 per request (default 20). The subscription
+  plan those calls count against is itself unpublished — see
+  plans/backstitch-plans-pricing.yml (plan_count: 0). No `RateLimits` pointer is
+  emitted, because recording an absence must not be scored as a presence.
+related_constraints:
+- constraint: results_per_request_max
+  value: 50
+  param: count
+  default: 20
+  source: https://docs.backstit.ch/api/
+- constraint: widget_page_view_billing
+  value: 1 API call per widget page view
+  source: https://docs.backstit.ch/api/
+- constraint: reindex_delay
+  value: up to ~1 minute after source/filter changes
+  source: https://docs.backstit.ch/api/
+probes:
+- url: https://docs.backstit.ch/api/
+  status: 200

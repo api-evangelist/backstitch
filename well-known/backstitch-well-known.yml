@@ -1,14 +1,77 @@
-generated: '2026-07-18'
-method: searched
+generated: '2026-08-13'
+method: probed
+source: live HTTP probes of every backstitch host
 note: >-
-  Probed the well-known discovery surface on the API and website hosts. No
-  documents were served (all 404). Recorded for auditability; no WellKnown/
-  SecurityTxt pointer is emitted because nothing was found.
+  Probed the well-known discovery surface on the API host, the docs host, both
+  apex/www website hosts and the trust host. backstitch serves NO well-known
+  document anywhere. No WellKnown, APICatalog or SecurityTxt pointer is emitted,
+  because this file records an absence and an absence must never be scored as a
+  presence.
+documents_found: 0
 hosts:
 - host: https://api.backstit.ch
   documents:
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
   - {path: /.well-known/security.txt, status: 404}
   - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://docs.backstit.ch
+  documents:
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
 - host: https://www.backstitch.io
   documents:
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
   - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://backstitch.io
+  documents:
+  - {path: /.well-known/agent-card.json, status: 404}
+  - {path: /.well-known/agent.json, status: 404}
+  - {path: /.well-known/security.txt, status: 404}
+  - {path: /.well-known/openid-configuration, status: 404}
+  - {path: /.well-known/oauth-authorization-server, status: 404}
+  - {path: /.well-known/oauth-protected-resource, status: 404}
+  - {path: /.well-known/api-catalog, status: 404}
+  - {path: /.well-known/ai-plugin.json, status: 404}
+- host: https://trust.backstitch.io
+  all_paths_rejected: true
+  reject_reason: >-
+    Vanta single-page-app catch-all. Every path below returned HTTP 200 with the
+    identical HTML shell (`<!doctype html><html data-version="57ce88fa..."` and
+    the assets.vanta.com trust-report bundle) — not a document. This is the
+    dominant false positive on well-known probes and is recorded here so a later
+    run does not re-credit it.
+  documents:
+  - {path: /.well-known/agent-card.json, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/agent.json, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/openid-configuration, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/oauth-protected-resource, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, accepted: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, content_type: text/html, accepted: false}
+a2a_agent_card:
+  found: false
+  note: >-
+    No A2A Agent Card exists. Both the current path (/.well-known/agent-card.json)
+    and the pre-0.3 path (/.well-known/agent.json) were probed on all five hosts.
+    The only 200s came from the trust.backstitch.io SPA catch-all and were HTML,
+    not an AgentCard JSON object. Nothing is written to a2a/ — an agent card is
+    search-only and must never be authored on a provider's behalf.
+checked: '2026-08-13'

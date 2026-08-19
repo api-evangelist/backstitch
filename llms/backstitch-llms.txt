@@ -7,7 +7,8 @@
 
 ## Docs
 - [API Reference](https://docs.backstit.ch/api/): endpoints for organizations, teams, topics, sources, filters, results, cloning, custom sources, and the embed widget.
-- [Support / Knowledge Base](https://www.backstitch.io/help)
+- [Knowledge Base](https://support.backstitch.com/) — [Getting Started](https://support.backstitch.com/support-topic/getting-started/)
+- [Support](https://www.backstitch.io/help)
 - [Blog](https://www.backstitch.io/blog)
 
 ## Artifacts
@@ -18,9 +19,32 @@
 - [Data model](data-model/backstitch-data-model.yml)
 - [Embedded components (widget)](components/backstitch-components.yml)
 - [MCP candidate tool surface](mcp/backstitch-mcp.yml)
+- [Standards conformance](conformance/backstitch-conformance.yml)
+- [Packages / SDKs](packages/backstitch-packages.yml)
+- [Plans & pricing](plans/backstitch-plans-pricing.yml)
+- [Rate limits](rate-limits/backstitch-rate-limits.yml)
+- [Well-known probe](well-known/backstitch-well-known.yml)
+- [Domain security](security/backstitch-domain-security.yml)
+- [Trust center](security/backstitch-trust-center.yml)
+- [Vulnerability disclosure](security/backstitch-vulnerability-disclosure.yml)
+
+## What backstitch does not publish
+Recorded so an agent does not go looking. Each was probed on 2026-08-13.
+- No OpenAPI, Swagger, GraphQL SDL or AsyncAPI document at any location on api.backstit.ch, docs.backstit.ch or backstitch.io.
+- No first-party SDK on npm, PyPI, RubyGems, Maven Central, NuGet, Packagist, crates.io or pkg.go.dev. The `backstitch` package on PyPI belongs to a different author.
+- No hosted MCP server and no A2A agent card.
+- No `/.well-known/` document of any kind, on any host.
+- No pricing page or published plan tiers — commercial entry is a "Request a Quote" form.
+- No documented rate limits, rate-limit response headers, or 429 semantics.
+- No webhooks, event surface, changelog, CLI, sandbox or test credentials.
+- No idempotency key on any write operation.
 
 ## Company
 - [Website](https://www.backstitch.io/)
+- [Login (Studio)](https://studio.backstit.ch/)
+- [Request a Quote](https://www.backstitch.io/request-a-quote)
 - [GitHub organization](https://github.com/backstitch)
 - [Trust Center](https://trust.backstitch.io/)
-- [Privacy Policy](https://www.backstitch.io/website-privacy-policy)
+- [Terms of Service](https://www.backstitch.io/terms-of-service)
+- [Website Privacy Policy](https://www.backstitch.io/website-privacy-policy)
+- [Platform Privacy Policy](https://www.backstitch.io/platform-privacy-policy)

@@ -1,0 +1,57 @@
+generated: '2026-08-13'
+method: searched
+source: https://trust.backstitch.io/
+trust_center:
+  url: https://trust.backstitch.io/
+  status: 200
+  title: backstitch Trust Center
+  platform: Vanta
+  platform_evidence: >-
+    The served HTML is a Vanta trust-report shell — assets.vanta.com static
+    bundle, data-environment="prod", data-slugid="h77c0lxbsolmn6ttdutbtv",
+    stylesheet index-trust-report-*.css.
+  linked_from:
+    - label: Security & Compliance (site nav/footer)
+      url: https://www.backstitch.io/
+  description: >-
+    "backstitch is committed protecting your data with robust practices,
+    certifications, and industry leading safeguards. Review our policies and
+    certifications, and see how backstitch is a service you can trust." (verbatim
+    meta description of https://trust.backstitch.io/)
+certifications:
+- name: SOC for Service Organizations (AICPA)
+  status: claimed
+  report_type: null
+  period: null
+  auditor: null
+  evidence: >-
+    AICPA SOC non-CPA badge published on the backstitch homepage
+    (https://www.backstitch.io/hs-fs/hubfs/21972-312_SOC_NonCPA.png) linking to
+    http://www.aicpa.org/soc4so. The badge asserts a SOC examination; backstitch
+    does not state Type I vs Type II, the audit period, or the auditing firm on
+    any anonymously readable page.
+readability:
+  machine_readable: false
+  note: >-
+    The trust center's substance — control list, certification records, document
+    downloads — is rendered client-side by the Vanta bundle and is not present in
+    the served HTML. The Vanta data API refuses anonymous reads
+    (https://api.vanta.com/v1/public/trust-report/h77c0lxbsolmn6ttdutbtv -> 401;
+    the legacy https://api.vanta.com/graphql -> 410 Gone), so the certification
+    list could not be enumerated without a request-access flow. Only the SOC
+    badge on backstitch's own homepage is independently verifiable.
+  spa_catch_all_warning: >-
+    trust.backstitch.io answers HTTP 200 with the same SPA shell for EVERY path,
+    including /.well-known/agent-card.json, /.well-known/security.txt,
+    /robots.txt and /sitemap.xml. Those 200s are not documents and must not be
+    read as discovery hits. See well-known/backstitch-well-known.yml.
+probes:
+- url: https://trust.backstitch.io/
+  status: 200
+- url: https://api.vanta.com/v1/public/trust-report/h77c0lxbsolmn6ttdutbtv
+  status: 401
+- url: https://api.vanta.com/graphql
+  status: 410
+- url: https://www.backstitch.io/
+  status: 200
+checked: '2026-08-13'

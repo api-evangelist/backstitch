@@ -1,0 +1,25 @@
+generated: '2026-08-13'
+method: searched
+source: https://www.backstitch.io/request-a-quote
+plan_count: 0
+plans: []
+note: >-
+  backstitch publishes no pricing page and no plan tiers. https://www.backstitch.io/pricing
+  and /plans both return 404; the site's only commercial call to action is
+  "Request a Quote" (https://www.backstitch.io/request-a-quote, 200), a HubSpot
+  lead form. The API reference does say each widget page view "will count as a
+  single API call according to your subscription plan"
+  (https://docs.backstit.ch/api/), which confirms subscription plans EXIST — but
+  no tier, price, currency, billing period, quota or overage is published
+  anywhere public. No `Pricing` pointer is emitted because there is no pricing
+  page to point at.
+model: enterprise-quote
+probes:
+- url: https://www.backstitch.io/pricing
+  status: 404
+- url: https://www.backstitch.io/plans
+  status: 404
+- url: https://www.backstitch.io/request-a-quote
+  status: 200
+- url: https://docs.backstit.ch/api/
+  status: 200

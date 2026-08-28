@@ -10,6 +10,17 @@ description: >-
   statuses, photos, videos, products, services, hotels) or embed them with a
   drop-in JavaScript widget. The API is offered in a legacy v1 and a recommended v2
   over REST/JSON, authenticated with an Organization Key plus per-topic tokens.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: unknown
   onboarding: self-serve

@@ -81,6 +81,10 @@ apis:
   - type: APIReference
     url: https://docs.backstit.ch/api/
 common:
+- type: Plans
+  url: plans/backstitch-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/backstitch-rate-limits.yml
 - type: DomainSecurity
   url: security/backstitch-domain-security.yml
 - type: Website
